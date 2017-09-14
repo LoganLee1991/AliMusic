@@ -9,7 +9,7 @@ select
     sf.song_id,
     songs.artist_id,
     sf.play_time_d,
-	sf.play_time_h,
+    sf.play_time_h,
     sf.num_play,
     sf.num_download,
     sf.num_collect,
@@ -33,14 +33,14 @@ from
                 else 0
             end) as num_collect,
             play_time_d,
-			play_time_h,
+     	    play_time_h,
             weekday(play_time_d) + 1 as weekday,
             unixtime
     FROM
         AliMusic.test_user_actions
     group by song_id , record_day
     order by song_id , record_day) as sf
-        join
+    join
     songs ON sf.song_id = songs.song_id
 order by song_id , play_time_d;
 
